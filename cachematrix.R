@@ -1,12 +1,12 @@
 ## This function creates a special "matrix" object that can cache its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
-        i <- NULL
+	          i <- NULL
 	  identical <- FALSE
         set <- function(y) {
-                x <<- y
-                i <<- NULL
 	    identical <<- identical(x, y)
+	            x <<- y
+        	    i <<- NULL	
         }
         get <- function() x
         setinverse <- function(inverse) i <<- inverse
@@ -33,5 +33,6 @@ cacheSolve <- function(x, ...) {
         data <- x$get()
         i <- solve(data)
         x$setinverse(i)
+	x$setidentical(TRUE)
         i
 }
